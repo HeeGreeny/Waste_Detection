@@ -31,9 +31,9 @@ DEFAULT_DETECT_IMAGE = IMAGES_DIR / 'A2C1_detected.jpg'
 
 # Videos config
 VIDEO_DIR = ROOT / 'videos'
-VIDEO_1_PATH = VIDEO_DIR / 'waste_conveyor.mov'
-VIDEO_2_PATH = VIDEO_DIR / 'video_2.mp4'
-VIDEO_3_PATH = VIDEO_DIR / 'video_3.mp4'
+VIDEO_1_PATH = VIDEO_DIR / 'waste_conveyor_1.mov'
+VIDEO_2_PATH = VIDEO_DIR / 'waste_conveyor_2.mov'
+VIDEO_3_PATH = VIDEO_DIR / 'waste_conveyor.mov'
 VIDEOS_DICT = {
     'video_1': VIDEO_1_PATH,
     'video_2': VIDEO_2_PATH,
