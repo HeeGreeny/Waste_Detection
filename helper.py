@@ -3,14 +3,14 @@ import time
 import streamlit as st
 import cv2
 from pytube import YouTube
-import torch
+# import torch
 import settings
 
 
 def load_model(model_path):
     model = YOLO(model_path)
-    if torch.cuda.is_available():
-        model.cuda()
+    # if torch.cuda.is_available():
+    #     model.cuda()
     return model
 
 
