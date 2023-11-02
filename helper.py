@@ -9,6 +9,8 @@ import settings
 
 def load_model(model_path):
     model = YOLO(model_path)
+    if torch.cuda.is_available():
+        model.cuda()
     return model
 
 
