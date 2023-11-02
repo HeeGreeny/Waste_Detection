@@ -30,14 +30,23 @@ DEFAULT_IMAGE = IMAGES_DIR / 'A2C1.png'
 DEFAULT_DETECT_IMAGE = IMAGES_DIR / 'A2C1_detected.jpg'
 
 # Videos config
+# Videos config
 VIDEO_DIR = ROOT / 'videos'
-VIDEO_1_PATH = VIDEO_DIR / 'waste_conveyor_1.mov'
-VIDEO_2_PATH = VIDEO_DIR / 'waste_conveyor_2.mov'
-VIDEO_3_PATH = VIDEO_DIR / 'waste_conveyor.mov'
+VIDEO_1_PATH = VIDEO_DIR / '20231101_0747_video_clip1.mp4'
+VIDEO_2_PATH = VIDEO_DIR / '20231101_0747_video_clip2.mp4'
+VIDEO_3_PATH = VIDEO_DIR / '20231101_0812_video_clip1.mp4'
+VIDEO_4_PATH = VIDEO_DIR / '20231101_0812_video_clip2.mp4'
+VIDEO_5_PATH = VIDEO_DIR / '20231101_0747_video_clip2.mp4'
+VIDEO_6_PATH = VIDEO_DIR / '20231101_video1_clip1.mp4'
+VIDEO_7_PATH = VIDEO_DIR / '20231101_video1_clip2.mp4'
 VIDEOS_DICT = {
     'video_1': VIDEO_1_PATH,
     'video_2': VIDEO_2_PATH,
     'video_3': VIDEO_3_PATH,
+    'video_4': VIDEO_4_PATH,
+    'video_5': VIDEO_5_PATH,
+    'video_6': VIDEO_6_PATH,
+    'video_7': VIDEO_7_PATH
 }
 
 # ML Model config
