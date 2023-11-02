@@ -17,9 +17,6 @@ ROOT = root_path.relative_to(Path.cwd())
 # Sources
 IMAGE = 'Image'
 VIDEO = 'Video'
-# WEBCAM = 'Webcam'
-# RTSP = 'RTSP'
-# YOUTUBE = 'YouTube'
 
 # SOURCES_LIST = [IMAGE, VIDEO, WEBCAM, RTSP, YOUTUBE]
 SOURCES_LIST = [IMAGE, VIDEO]
@@ -30,13 +27,12 @@ DEFAULT_IMAGE = IMAGES_DIR / 'A2C1.png'
 DEFAULT_DETECT_IMAGE = IMAGES_DIR / 'A2C1_detected.jpg'
 
 # Videos config
-# Videos config
 VIDEO_DIR = ROOT / 'videos'
-VIDEO_1_PATH = VIDEO_DIR / '20231101_0747_video_clip1.mp4'
+VIDEO_1_PATH = VIDEO_DIR / '20231102_0525_video_clip1.mp4'
 VIDEO_2_PATH = VIDEO_DIR / '20231101_0812_video_clip1.mp4'
 VIDEO_3_PATH = VIDEO_DIR / '20231101_0812_video_clip2.mp4'
 VIDEO_4_PATH = VIDEO_DIR / '20231101_video1_clip1.mp4'
-VIDEO_5_PATH = VIDEO_DIR / '20231102_0525_video_clip1.mp4'
+VIDEO_5_PATH = VIDEO_DIR / '20231101_0747_video_clip1.mp4'
 VIDEOS_DICT = {
     'video_1': VIDEO_1_PATH,
     'video_2': VIDEO_2_PATH,
@@ -48,8 +44,3 @@ VIDEOS_DICT = {
 # ML Model config
 MODEL_DIR = ROOT / 'weights'
 DETECTION_MODEL = MODEL_DIR / 'best.pt'
-# DETECTION_MODEL = MODEL_DIR / 'yolov8n.pt'
-# SEGMENTATION_MODEL = MODEL_DIR / 'yolov8n-seg.pt'
-
-# Webcam
-# WEBCAM_PATH = 0
