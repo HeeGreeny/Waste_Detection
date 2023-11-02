@@ -78,7 +78,7 @@ if source_radio == settings.IMAGE:
         else:
             if st.sidebar.button('Detect Objects'):
                 res = model.predict(uploaded_image,
-                                    conf=confidence, device='cuda',
+                                    conf=confidence
                                     )
                 boxes = res[0].boxes
                 res_plotted = res[0].plot()[:, :, ::-1]
