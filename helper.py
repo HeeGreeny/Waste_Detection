@@ -3,14 +3,11 @@ import time
 import streamlit as st
 import cv2
 from pytube import YouTube
-# import torch
 import settings
 
 
 def load_model(model_path):
     model = YOLO(model_path)
-    # if torch.cuda.is_available():
-    #     model.cuda()
     return model
 
 
@@ -26,7 +23,7 @@ def display_tracker_options():
 def _display_detected_frames(conf, model, st_frame, image, is_display_tracking=None):
     # Resize the image to a standard size
     # image = cv2.resize(image, (720, int(720*(9/16))))
-    image = cv2.resize(image, (480, int(480 * (9 / 16)))  # Reduce the frame size
+    image = cv2.resize(image, (480, int(480*(9/16)))  # Reduce the frame size
 
     # Display object tracking, if specified
     if is_display_tracking:
