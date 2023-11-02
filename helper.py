@@ -27,10 +27,10 @@ def display_tracker_options():
     if is_display_tracker:
         # tracker_type = st.radio("Tracker", ("bytetrack.yaml", "botsort.yaml"))
         return is_display_tracker
-    return is_display_tracker, None
+    return is_display_tracker
 
 
-def _display_detected_frames(conf, model, st_frame, image, is_display_tracking=None, tracker=None):
+def _display_detected_frames(conf, model, st_frame, image, is_display_tracking=None):
     """
     Display the detected objects on a video frame using the YOLOv8 model.
 
@@ -50,7 +50,7 @@ def _display_detected_frames(conf, model, st_frame, image, is_display_tracking=N
 
     # Display object tracking, if specified
     if is_display_tracking:
-        res = model.track(image, conf=conf, persist=True, tracker=tracker)
+        res = model.track(image, conf=conf, persist=True)
     else:
         # Predict the objects in the image using the YOLOv8 model
         res = model.predict(image, conf=conf)
