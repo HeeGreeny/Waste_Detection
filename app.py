@@ -24,8 +24,6 @@ st.title("AI 생활 폐기물 분류 시스템")
 st.sidebar.header(" Upload trash images or Videos :fire:")
 
 # Model Options
-# model_type = st.sidebar.radio(
-#     "Select Task", ['Detection', 'Segmentation'])
 model_type = st.sidebar.radio(
     "Select Task", ['Detection'])
 
@@ -35,8 +33,6 @@ confidence = float(st.sidebar.slider(
 # Selecting Detection Or Segmentation
 if model_type == 'Detection':
     model_path = Path(settings.DETECTION_MODEL)
-# elif model_type == 'Segmentation':
-#     model_path = Path(settings.SEGMENTATION_MODEL)
 
 # Load Pre-trained ML Model
 try:
@@ -98,15 +94,6 @@ if source_radio == settings.IMAGE:
 
 elif source_radio == settings.VIDEO:
     helper.play_stored_video(confidence, model)
-
-# elif source_radio == settings.WEBCAM:
-#     helper.play_webcam(confidence, model)
-
-# elif source_radio == settings.RTSP:
-#     helper.play_rtsp_stream(confidence, model)
-
-# elif source_radio == settings.YOUTUBE:
-#     helper.play_youtube_video(confidence, model)
 
 else:
     st.error("Please select a valid source type!")
