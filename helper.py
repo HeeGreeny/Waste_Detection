@@ -39,7 +39,7 @@ def play_stored_video(conf, model):
         video_bytes = video_file.read()
     if video_bytes:
         st.video(video_bytes, format='video/MP4')
-       if st.sidebar.button('Detect Video Objects'):
+    if st.sidebar.button('Detect Video Objects'):
         try:
             vid_cap = cv2.VideoCapture(
                 str(settings.VIDEOS_DICT.get(source_vid)))
@@ -62,5 +62,3 @@ def play_stored_video(conf, model):
         except Exception as e:
             st.sidebar.error("Error loading video: " + str(e))
                 break
-        except Exception as e:
-            st.sidebar.error("Error loading video: " + str(e))
