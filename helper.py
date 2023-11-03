@@ -41,23 +41,17 @@ def play_stored_video(conf, model):
         st.video(video_bytes, format='video/MP4')
     if st.sidebar.button('Detect Video Objects'):
         try:
-            vid_cap = cv2.VideoCapture(
-                str(settings.VIDEOS_DICT.get(source_vid)))
+            vid_cap = cv2.VideoCapture(str(settings.VIDEOS_DICT.get(source_vid)))
             st_frame = st.empty()
-            while (vid_cap.isOpened()):
+            frame_skip = 2  # Skip every N frames for faster playback
+            while vid_cap.isOpened():
+                for i in range(frame_skip):
+                    vid_cap.read()
                 success, image = vid_cap.read()
                 if success:
-                    _display_detected_frames(conf,
-                                             model,
-                                             st_frame,
-                                             image,
-                                             is_display_tracker
-                                             # tracker,
-                                             )
+                    _display_detected_frames(conf, model, st_frame, image, is_display_tracker)
                 else:
                     vid_cap.release()
-                    end_time = time.time()
-                    print(f"Video remaking time: {end_time - start_time} seconds")
                     break
         except Exception as e:
             st.sidebar.error("Error loading video: " + str(e))
