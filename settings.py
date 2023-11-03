@@ -37,9 +37,12 @@ VIDEO_3_PATH = VIDEO_DIR / 'm_density_slow2.mp4'
 # VIDEO_7_PATH = VIDEO_DIR / 'm_density_very_fast.mp4'
 # VIDEO_8_PATH = VIDEO_DIR / 'm_density_very_slow.mp4'
 VIDEOS_DICT = {
-    'video_1': VIDEO_1_PATH,
-    'video_2': VIDEO_2_PATH,
-    'video_3': VIDEO_3_PATH,
+    'H_density_Fast': VIDEO_1_PATH,
+    'H_density_Slow': VIDEO_2_PATH,
+    'M_density_Rotation': VIDEO_3_PATH,
+    # 'video_1': VIDEO_1_PATH,
+    # 'video_2': VIDEO_2_PATH,
+    # 'video_3': VIDEO_3_PATH,
     # 'video_4': VIDEO_4_PATH,
     # 'video_5': VIDEO_5_PATH,
     # 'video_6': VIDEO_6_PATH,
