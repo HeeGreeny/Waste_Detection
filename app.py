@@ -1,6 +1,7 @@
 # Python In-built packages
 from pathlib import Path
 import PIL
+import threading
 # External packages
 import streamlit as st
 # Local Modules
