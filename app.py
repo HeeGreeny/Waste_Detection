@@ -1,22 +1,19 @@
 # Python In-built packages
 from pathlib import Path
 import PIL
-
 # External packages
 import streamlit as st
-
 # Local Modules
 import settings
 import helper
 
-# Setting page layout
+# Set page layout
 st.set_page_config(
     page_title="MS AI SCHOOL 1팀",
     page_icon="🤖",
     layout="wide",
     initial_sidebar_state="expanded"
 )
-
 # Main page heading
 st.title("AI 생활 폐기물 분류 시스템")
 
@@ -26,17 +23,20 @@ st.sidebar.header(" Upload trash images or Videos :fire:")
 # Model Options
 model_type = st.sidebar.radio(
     "Select Task", ['Detection'])
-
 confidence = float(st.sidebar.slider(
     "Select Model Confidence", 25, 100, 40)) / 100
 
 # Selecting Detection Or Segmentation
 if model_type == 'Detection':
     model_path = Path(settings.DETECTION_MODEL)
-
-# Load Pre-trained ML Model
-try:
+    
+# Load Pre-trained ML Model (Using st.cache to improve speed)
+@st.cache_data
+def load_model(model_path):
     model = helper.load_model(model_path)
+    return model
+try:
+    model = load_model(model_path)
 except Exception as ex:
     st.error(f"Unable to load model. Check the specified path: {model_path}")
     st.error(ex)
