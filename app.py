@@ -78,22 +78,20 @@ if source_radio == settings.IMAGE:
                      use_column_width=True)
         else:
             if st.sidebar.button('Detect Objects'):
-                # Create a new thread for the detection task
-                def detection_thread():
-                    res = model.predict(uploaded_image, conf=confidence)
-                    boxes = res[0].boxes
-                    res_plotted = res[0].plot()[:, :, ::-1]
-                    st.image(res_plotted, caption='Detected Image',
-                             use_column_width=True)
-                    try:
-                        with st.expander("Detection Results"):
-                            for box in boxes:
-                                st.write(box.data)
-                    except Exception as ex:
-                        st.write("No image is uploaded yet!")
-                # Start the thread
-                thread = threading.Thread(target=detection_thread)
-                thread.start()
+                res = model.predict(uploaded_image,
+                                    conf=confidence
+                                    )
+                boxes = res[0].boxes
+                res_plotted = res[0].plot()[:, :, ::-1]
+                st.image(res_plotted, caption='Detected Image',
+                         use_column_width=True)
+                try:
+                    with st.expander("Detection Results"):
+                        for box in boxes:
+                            st.write(box.data)
+                except Exception as ex:
+                    # st.write(ex)
+                    st.write("No image is uploaded yet!")
 
 elif source_radio == settings.VIDEO:
     helper.play_stored_video(confidence, model)
