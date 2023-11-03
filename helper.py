@@ -43,15 +43,15 @@ def play_stored_video(conf, model):
         try:
             vid_cap = cv2.VideoCapture(str(settings.VIDEOS_DICT.get(source_vid)))
             st_frame = st.empty()
-            frame_skip = 2  # Skip every N frames for faster playback
-            while vid_cap.isOpened():
-                for i in range(frame_skip):
-                    vid_cap.read()
-                success, image = vid_cap.read()
-                if success:
-                    _display_detected_frames(conf, model, st_frame, image, is_display_tracker)
-                else:
-                    vid_cap.release()
-                    break
+            # frame_skip = 2  # Skip every N frames for faster playback
+            # while vid_cap.isOpened():
+            #     for i in range(frame_skip):
+            #         vid_cap.read()
+            success, image = vid_cap.read()
+            if success:
+                _display_detected_frames(conf, model, st_frame, image, is_display_tracker)
+            else:
+                vid_cap.release()
+                break
         except Exception as e:
             st.sidebar.error("Error loading video: " + str(e))
