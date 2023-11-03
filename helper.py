@@ -7,10 +7,10 @@ import settings
 
 
 def load_model(model_path):
-    start_time = time.time()
+    # start_time = time.time()
     model = YOLO(model_path)
-    end_time = time.time()
-    print(f"Model loading time: {end_time - start_time} seconds")
+    # end_time = time.time()
+    # print(f"Model loading time: {end_time - start_time} seconds")
     return model
 
 
@@ -24,7 +24,7 @@ def display_tracker_options():
 
 
 def _display_detected_frames(conf, model, st_frame, image, is_display_tracking=None):
-    start_time = time.time()
+    # start_time = time.time()
 
     # Resize the image to a standard size
     # image = cv2.resize(image, (720, int(720*(9/16))))
@@ -39,8 +39,8 @@ def _display_detected_frames(conf, model, st_frame, image, is_display_tracking=N
 
     # # Plot the detected objects on the video frame
     res_plotted = res[0].plot()
-    end_time = time.time()
-    print(f"Drawing bounding boxes time: {end_time - start_time} seconds")
+    # end_time = time.time()
+    # print(f"Drawing bounding boxes time: {end_time - start_time} seconds")
     st_frame.image(res_plotted,
                    caption='Detected Video',
                    channels="BGR",
@@ -48,7 +48,7 @@ def _display_detected_frames(conf, model, st_frame, image, is_display_tracking=N
                    )
 
 def play_stored_video(conf, model):
-    start_time = time.time()
+    # start_time = time.time()
     source_vid = st.sidebar.selectbox(
         "Choose a video...", settings.VIDEOS_DICT.keys())
 
@@ -77,8 +77,8 @@ def play_stored_video(conf, model):
                                              )
                 else:
                     vid_cap.release()
-                    end_time = time.time()
-                    print(f"Video remaking time: {end_time - start_time} seconds")
+                    # end_time = time.time()
+                    # print(f"Video remaking time: {end_time - start_time} seconds")
                     break
         except Exception as e:
             st.sidebar.error("Error loading video: " + str(e))
