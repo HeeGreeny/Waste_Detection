@@ -118,7 +118,7 @@ if source_radio == settings.IMAGE:
                                     st.write(f"{label} : {count}개")
                             else:
                                 st.write("No objects detected!")
-                except Exception as ex:
+                 except Exception as ex:
                     st.write("No image is uploaded yet!")          
 
 elif source_radio == settings.VIDEO:
