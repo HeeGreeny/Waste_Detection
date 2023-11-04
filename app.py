@@ -1,5 +1,6 @@
 # Python In-built packages
 from pathlib import Path
+from collections import Counter
 import PIL
 # import threading
 # External packages
@@ -86,8 +87,7 @@ if source_radio == settings.IMAGE:
     with col2:
         if source_img is None:
             default_detected_image_path = str(settings.DEFAULT_DETECT_IMAGE)
-            default_detected_image = PIL.Image.open(
-                default_detected_image_path)
+            default_detected_image = PIL.Image.open(default_detected_image_path)
             st.image(default_detected_image_path, caption='Detected Image',
                      use_column_width=True)
         else:
@@ -108,7 +108,6 @@ if source_radio == settings.IMAGE:
                     with col2:
                         with st.expander("Detected Objects"):
                             # match real names to detected classes
-                            # print out the objects detected with the total count of each name
                             
                             if len(labels) > 0:
                                 labels = [real_names[float(l)] for l in labels]
