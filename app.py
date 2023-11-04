@@ -118,8 +118,8 @@ if source_radio == settings.IMAGE:
                                     st.write(f"{label} : {count}개")
                             else:
                                 st.write("No objects detected!")
-                 except Exception as ex:
-                    st.write("No image is uploaded yet!")          
+                except Exception as ex:
+                    st.write("No image is uploaded yet!")             
 
 elif source_radio == settings.VIDEO:
     helper.play_stored_video(confidence, model)
