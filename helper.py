@@ -37,8 +37,8 @@ def play_stored_video(conf, model):
     is_display_tracker = display_tracker_options()
     with open(settings.VIDEOS_DICT.get(source_vid), 'rb') as video_file:
         video_bytes = video_file.read()
-    if video_bytes:
-        st.video(video_bytes, format='video/MP4')
+    # if video_bytes:
+    #     st.video(video_bytes, format='video/MP4')
     if st.sidebar.button('Detect Video Objects'):
         try:
             vid_cap = cv2.VideoCapture(str(settings.VIDEOS_DICT.get(source_vid)))
