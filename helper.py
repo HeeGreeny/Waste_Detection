@@ -76,10 +76,10 @@ def play_stored_video(conf, model):
                     detected_counts = Counter(detected_objects)
                     c_dict = dict(detected_counts) 
 
-                # Create an expander to display the counts
-                with st.expander("Detected Objects"):
-                    for label, count in c_dict.items():
-                        st.write(f"{label}")
+            # Create an expander to display the counts
+            with st.expander("Detected Objects"):
+                for label, count in c_dict.items():
+                    st.write(f"{label}")
                         
         except Exception as e:
             st.sidebar.error("Error loading video: " + str(e))
