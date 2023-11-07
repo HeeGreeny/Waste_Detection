@@ -28,19 +28,19 @@ DEFAULT_DETECT_IMAGE = IMAGES_DIR / 'A2C1_detected.jpg'
 
 # Videos config
 VIDEO_DIR = ROOT / 'videos'
-VIDEO_1_PATH = VIDEO_DIR / 'h_density_fast_1.mp4'
-VIDEO_2_PATH = VIDEO_DIR / 'h_density_slow_1.mp4'
-VIDEO_3_PATH = VIDEO_DIR / 'm_density_slow2.mp4'
-VIDEO_4_PATH = VIDEO_DIR / '20231102_0525_video_clip1.mp4'
+VIDEO_1_PATH = VIDEO_DIR / 'AI비전로봇_1.mp4'
+VIDEO_2_PATH = VIDEO_DIR / '20231102_0525_video_clip1.mp4'
+VIDEO_3_PATH = VIDEO_DIR / 'm_density_slow2_1.mp4'
+VIDEO_4_PATH = VIDEO_DIR / 'Made with Clipchamp(s_l).mp4'
 # VIDEO_5_PATH = VIDEO_DIR / 'm_density_fast.mp4'
 # VIDEO_6_PATH = VIDEO_DIR / 'm_density_slow2.mp4'
 # VIDEO_7_PATH = VIDEO_DIR / 'm_density_very_fast.mp4'
 # VIDEO_8_PATH = VIDEO_DIR / 'm_density_very_slow.mp4'
 VIDEOS_DICT = {
-    'H_density_Fast': VIDEO_1_PATH,
-    'H_density_Slow': VIDEO_2_PATH,
-    'M_density_Rotation': VIDEO_3_PATH,
-    'video_4': VIDEO_4_PATH,
+    'Validation': VIDEO_4_PATH,
+    'Test1': VIDEO_3_PATH,
+    'Test2': VIDEO_2_PATH,
+    'Test3': VIDEO_1_PATH,
     # 'video_1': VIDEO_1_PATH,
     # 'video_2': VIDEO_2_PATH,
     # 'video_3': VIDEO_3_PATH,
