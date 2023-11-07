@@ -1,11 +1,25 @@
 from ultralytics import YOLO
-import time
 import streamlit as st
 import cv2
-from pytube import YouTube
 import torch
 import settings
+from collections import Counter
 
+real_names = {
+    0 : 'Paper',
+    1 : 'Can',
+    2 : 'Glass',
+    3 : 'Pet',
+    4 : 'Plastic',
+    5 : 'Vinyl',
+    6 : 'Styrofoam',
+    7 : 'Battery',
+    8 : 'Can(foreign)',
+    9 : 'Glass(foreign)',
+    10 : 'Pet(foreign)'
+}
+
+@st.cache_data
 def load_model(model_path):
     model = YOLO(model_path)
     return model
@@ -26,29 +40,54 @@ def _display_detected_frames(conf, model, st_frame, image, is_display_tracking=N
     
     # Plot the detected objects on the video frame
     res_plotted = res[0].plot()
-    st_frame.image(res_plotted,
-                   caption='Detected Video',
-                   channels="BGR",
-                   use_column_width=True
-                   )
-    
+    st_frame.image(res_plotted, caption='Detected Video',  channels="BGR",  use_column_width=True)      
+
 def play_stored_video(conf, model):
     source_vid = st.sidebar.selectbox("Choose a video...", settings.VIDEOS_DICT.keys())
     is_display_tracker = display_tracker_options()
-    with open(settings.VIDEOS_DICT.get(source_vid), 'rb') as video_file:
-        video_bytes = video_file.read()
-    # if video_bytes:
-    #     st.video(video_bytes, format='video/MP4')
-    if st.sidebar.button('Detect Video Objects'):
-        try:
-            vid_cap = cv2.VideoCapture(str(settings.VIDEOS_DICT.get(source_vid)))
-            st_frame = st.empty()
-            while vid_cap.isOpened():
-                success, image = vid_cap.read()
-                if success:
-                    _display_detected_frames(conf, model, st_frame, image, is_display_tracker)
-                else:
-                    vid_cap.release()
-                    break
-        except Exception as e:
-            st.sidebar.error("Error loading video: " + str(e))
+
+    col1, col2 = st.columns(2)
+    with col1:
+        with open(settings.VIDEOS_DICT.get(source_vid), 'rb') as video_file:
+            video_bytes = video_file.read()
+        if video_bytes:
+            st.video(video_bytes, format='video/MP4')
+
+    with col2:
+        if st.sidebar.button('Detect Video Objects'):
+            try:
+                vid_cap = cv2.VideoCapture(str(settings.VIDEOS_DICT.get(source_vid)))
+                st_frame = st.empty()
+                frame_skip = 2  # Skip every N frames for faster playback
+                detected_objects = []                
+
+                while vid_cap.isOpened():
+                    for i in range(frame_skip):
+                        vid_cap.read()
+                    success, image = vid_cap.read()
+                    if success:
+                        _display_detected_frames(conf, model, st_frame, image, is_display_tracker)
+
+                        # Calculate object counts after processing all frames
+                        res = model.predict(image, conf=conf)
+                        boxes = res[0].boxes
+                        labels = boxes.cls
+                        
+                        for label in labels:
+                                detected_objects.append(real_names[label.item()])                 
+                                             
+                    else:
+                        vid_cap.release()
+                        break    
+
+                if detected_objects:
+                    detected_counts = Counter(detected_objects)
+                    c_dict = dict(detected_counts) 
+
+                # Create an expander to display the counts
+                with st.expander("Detected Objects"):
+                    for label, count in c_dict.items():
+                        st.write(f"{label}")
+
+            except Exception as e:
+                st.sidebar.error("Error loading video: " + str(e))
