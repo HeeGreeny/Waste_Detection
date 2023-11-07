@@ -102,7 +102,7 @@ if source_radio == settings.IMAGE:
 
                         
 elif source_radio == settings.VIDEO:
-    helper3.play_stored_video(confidence, model)
+    helper.play_stored_video(confidence, model)
 
 
 else:
