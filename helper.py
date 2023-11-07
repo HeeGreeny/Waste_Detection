@@ -46,9 +46,6 @@ def play_stored_video(conf, model):
     source_vid = st.sidebar.selectbox("Choose a video...", settings.VIDEOS_DICT.keys())
     is_display_tracker = display_tracker_options()
 
-    def play_stored_video(conf, model):
-    source_vid = st.sidebar.selectbox("Choose a video...", settings.VIDEOS_DICT.keys())
-    is_display_tracker = display_tracker_options()
     with open(settings.VIDEOS_DICT.get(source_vid), 'rb') as video_file:
         video_bytes = video_file.read()
     if video_bytes:
