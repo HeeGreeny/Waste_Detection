@@ -29,7 +29,7 @@ DEFAULT_DETECT_IMAGE = IMAGES_DIR / 'A2C1_detected.jpg'
 # Videos config
 VIDEO_DIR = ROOT / 'videos'
 VIDEO_1_PATH = VIDEO_DIR / 'AI비전로봇_1.mp4'
-VIDEO_2_PATH = VIDEO_DIR / 'video_clip1.mp4'
+VIDEO_2_PATH = VIDEO_DIR / 'video_clip_1.mp4'
 VIDEO_3_PATH = VIDEO_DIR / 'm_density_slow2_1.mp4'
 VIDEO_4_PATH = VIDEO_DIR / 'Made with Clipchamp(s_l).mp4'
 # VIDEO_5_PATH = VIDEO_DIR / 'm_density_fast.mp4'
