@@ -46,26 +46,21 @@ def play_stored_video(conf, model):
     source_vid = st.sidebar.selectbox("Choose a video...", settings.VIDEOS_DICT.keys())
     is_display_tracker = display_tracker_options()
 
-    col1, col2 = st.columns(2)
-    with col1:
-        with open(settings.VIDEOS_DICT.get(source_vid), 'rb') as video_file:
-            video_bytes = video_file.read()
-        if video_bytes:
-            st.video(video_bytes, format='video/MP4')
-
-    with col2:
-        if st.sidebar.button('Detect Video Objects'):
-            try:
-                vid_cap = cv2.VideoCapture(str(settings.VIDEOS_DICT.get(source_vid)))
-                st_frame = st.empty()
-                frame_skip = 2  # Skip every N frames for faster playback
-                detected_objects = []                
-
-                while vid_cap.isOpened():
-                    for i in range(frame_skip):
-                        vid_cap.read()
-                    success, image = vid_cap.read()
-                    if success:
+    def play_stored_video(conf, model):
+    source_vid = st.sidebar.selectbox("Choose a video...", settings.VIDEOS_DICT.keys())
+    is_display_tracker = display_tracker_options()
+    with open(settings.VIDEOS_DICT.get(source_vid), 'rb') as video_file:
+        video_bytes = video_file.read()
+    if video_bytes:
+        st.video(video_bytes, format='video/MP4')
+    if st.sidebar.button('Detect Video Objects'):
+        try:
+            vid_cap = cv2.VideoCapture(str(settings.VIDEOS_DICT.get(source_vid)))
+            st_frame = st.empty()
+            detected_objects = []
+            while vid_cap.isOpened():
+                success, image = vid_cap.read()
+                if success:
                         _display_detected_frames(conf, model, st_frame, image, is_display_tracker)
 
                         # Calculate object counts after processing all frames
@@ -74,13 +69,13 @@ def play_stored_video(conf, model):
                         labels = boxes.cls
                         
                         for label in labels:
-                                detected_objects.append(real_names[label.item()])                 
-                                             
-                    else:
+                                detected_objects.append(real_names[label.item()])                
+                     
+                else:
                         vid_cap.release()
                         break    
 
-                if detected_objects:
+            if detected_objects:
                     detected_counts = Counter(detected_objects)
                     c_dict = dict(detected_counts) 
 
@@ -88,6 +83,6 @@ def play_stored_video(conf, model):
                 with st.expander("Detected Objects"):
                     for label, count in c_dict.items():
                         st.write(f"{label}")
-
-            except Exception as e:
-                st.sidebar.error("Error loading video: " + str(e))
+                        
+        except Exception as e:
+            st.sidebar.error("Error loading video: " + str(e))
