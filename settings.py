@@ -52,4 +52,4 @@ VIDEOS_DICT = {
 }
 # ML Model config
 MODEL_DIR = ROOT / 'weights'
-DETECTION_MODEL = MODEL_DIR / 'best4.pt'  # +2하기 ex) best4 -> 6번째 학습
+DETECTION_MODEL = MODEL_DIR / 'best5.pt'  # +2하기 ex) best4 -> 6번째 학습
