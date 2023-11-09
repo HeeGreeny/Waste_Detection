@@ -6,17 +6,22 @@ import settings
 from collections import Counter
 
 real_names = {
-    0 : 'Paper',
-    1 : 'Can',
-    2 : 'Glass',
-    3 : 'Pet',
-    4 : 'Plastic',
-    5 : 'Vinyl',
-    6 : 'Styrofoam',
-    7 : 'Battery',
-    8 : 'Can(foreign)',
-    9 : 'Glass(foreign)',
-    10 : 'Pet(foreign)'
+    0 : '종이', #'Paper',
+    1 : '종이팩', #'Paper_pack',
+    2 : '종이컵', #'Paper_cup',
+    3 : '비닐', #'Vinyl',
+    4 : '비닐+이물질', #'Vinyl(f)',
+    5 : '플라스틱', #'Plastic',
+    6 : '플라스틱+이물질', #'Plastic(f)',
+    7 : '재사용유리', #'Recycle_glass',
+    8 : '갈색유리', #'Brown_glass',
+    9 : '녹색유리', #'Green_glass',
+    10 : '백색유리', #'White_glass',
+    11 : '기타유리', #'Other_glass',
+    12 : '캔류', #'Can',
+    13 : '페트', #'Pet',  
+    14 : '스티로폼', #'Form',
+    15 : '건전지', #'Battery',
 }
 
 @st.cache_data
